@@ -13,7 +13,14 @@ namespace XamarinIOS
         public override void ViewDidLoad ()
         {
             base.ViewDidLoad ();
-            // Perform any additional setup after loading the view, typically from a nib.
+
+            btnPress.TouchUpInside += (object sender, EventArgs e) =>
+            {
+                var alert = UIAlertController.Create("Not supported", "Scheme 'tel:' is not supported on this device", UIAlertControllerStyle.Alert);
+                alert.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Default, null));
+                PresentViewController(alert, true, null);
+            };
+
         }
 
         public override void DidReceiveMemoryWarning ()
