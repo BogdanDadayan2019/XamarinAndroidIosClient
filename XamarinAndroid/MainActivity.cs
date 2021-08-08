@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using SharedProject;
 
 namespace XamarinAndroid
 {
@@ -72,15 +73,23 @@ namespace XamarinAndroid
 
             string result = await response.Content.ReadAsStringAsync();
 
+            Utilits b = new Utilits();
+
+            string a = b.Name();  
+
+
             Android.App.AlertDialog.Builder dialog = new Android.App.AlertDialog.Builder(this);
             Android.App.AlertDialog alert = dialog.Create();
             alert.SetTitle("Test");
-            alert.SetMessage("Привет, " + result);
+            alert.SetMessage("Привет, " + a);
             alert.SetButton("ОК", (c, ev) =>
             {
                 // Задача нажатия кнопки ОК  
             });
             alert.Show();
+
+
+
         }
 
 

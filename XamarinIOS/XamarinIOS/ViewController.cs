@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using UIKit;
+using SharedProject;
 
 namespace XamarinIOS
 {
@@ -52,7 +53,11 @@ namespace XamarinIOS
 
                 string result = await response.Content.ReadAsStringAsync();
 
-                var alert = UIAlertController.Create("Hello ", result, UIAlertControllerStyle.Alert);
+                Utilits b = new Utilits();
+
+                string a = b.Name();
+
+                var alert = UIAlertController.Create("Hello ", a, UIAlertControllerStyle.Alert);
                 alert.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Default, null));
                 PresentViewController(alert, true, null);
             };

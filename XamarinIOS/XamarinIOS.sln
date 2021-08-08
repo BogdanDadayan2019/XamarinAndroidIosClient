@@ -7,7 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinIOS", "XamarinIOS\Xa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinAndroid", "..\XamarinAndroid\XamarinAndroid.csproj", "{BAD4ABEE-D1E1-46E3-8832-0F57AA9FAD4E}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SharedProject", "..\SharedProject\SharedProject.shproj", "{FB00DD7C-318D-401B-B5D1-09010495AB60}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\SharedProject\SharedProject.projitems*{1aef1725-94eb-4e7f-9c67-e156068bad9b}*SharedItemsImports = 4
+		..\SharedProject\SharedProject.projitems*{bad4abee-d1e1-46e3-8832-0f57aa9fad4e}*SharedItemsImports = 4
+		..\SharedProject\SharedProject.projitems*{fb00dd7c-318d-401b-b5d1-09010495ab60}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|iPhone = Debug|iPhone
