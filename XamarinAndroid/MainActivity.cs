@@ -1,97 +1,124 @@
 ﻿using Android.App;
-using Android.OS;
-using Android.Runtime;
 using Android.Widget;
-using AndroidX.AppCompat.App;
-using Newtonsoft.Json;
-using System;
+using Android.Views;
+using Android.OS;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
-using SharedProject;
+using XamarinAndroid;
+using Android.Content;
+using XamarinAndroid.Resources.layout;
 
-namespace XamarinAndroid
+namespace DesignerWalkthrough
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
-    public class MainActivity : AppCompatActivity
+    [Activity(Label = "Wardrobe", Theme = "@style/AppTheme", MainLauncher = true)]
+    public class MainActivity : AndroidX.AppCompat.App.AppCompatActivity
     {
-        Button button1;
-
-        private static readonly HttpClient client = new HttpClient();
-
-        private readonly string helloUrl = "http://192.168.0.188:5000/api/values/";
-
-
-        private Task AlertDialog(string v1, string v2, string v)
-        {
-            throw new NotImplementedException();
-        }
+        List<ClothesType> clothesTypes = new List<ClothesType>();
+        ListView listView;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
+            listView = FindViewById<ListView>(Resource.Id.listView1);
 
-            button1 = FindViewById<Button>(Resource.Id.button1);
+            ClothesType tshirt = new ClothesType("T-shirt", "T-shirt", Resource.Drawable.tshirt, 1);
+            ClothesType hoodie = new ClothesType("Hoodie", "худи", Resource.Drawable.hoodie, 2);
+            ClothesType cap = new ClothesType("Cap", "кепки", Resource.Drawable.cap, 3);
+            ClothesType socs = new ClothesType("Socs", "носки", Resource.Drawable.socs, 4);
 
-            button1.Click += button1_click;
+            clothesTypes.Add(tshirt);
+            clothesTypes.Add(hoodie);
+            clothesTypes.Add(cap);
+            clothesTypes.Add(socs);
 
+            listView.Adapter = new ClothesAdapter(this, clothesTypes);
+            listView.ItemClick += ListView_ItemClick;
 
         }
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+
+        private void ListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            Intent intent = new Intent(this, typeof(ActivityTwo));
+            StartActivity(intent);
 
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            //var a = listView.GetItemAtPosition(e.Position);
+            //if (e.Position == tshirt.id)
+            //{
+            //    Intent intent = new Intent(this, typeof(ActivityThree));
+            //    StartActivity(intent);
+            //}
+            //else if (e.Position == hoodie.id)
+            //{
+            //    Intent intent = new Intent(this, typeof(ActivityTwo));
+            //    StartActivity(intent);
+            //}
+            //else if (e.Position == cap.id)
+            //{
+            //    Intent intent = new Intent(this, typeof(ActivityThree));
+            //    StartActivity(intent);
+            //}
+            //else if (e.Position == socs.id)
+            //{
+            //    Intent intent = new Intent(this, typeof(ActivityThree));
+            //    StartActivity(intent);
+            //}
         }
+    }
 
-        private async void button1_click(object sender, EventArgs e)
+    public class ClothesAdapter : BaseAdapter<ClothesType>
+    {
+        List<ClothesType> items;
+        Activity context;
+        public ClothesAdapter(Activity context, List<ClothesType> items)
+            : base()
         {
+            this.context = context;
+            this.items = items;
+        }
+        public override long GetItemId(int position)
+        {
+            return position;
+        }
+        public override ClothesType this[int position]
+        {
+            get { return items[position]; }
+        }
+        public override int Count
+        {
+            get { return items.Count; }
+        }
+        public override View GetView(int position, View convertView, ViewGroup parent)
+        {
+            var item = items[position];
 
-            JavaDictionary<string, string> dict = new JavaDictionary<string, string>()
-            {
-                { "s", "Vasya"}
-            };
+            View view = convertView;
+            if (view == null)
+                view = context.LayoutInflater.Inflate(Resource.Layout.list_item, null);
+            view.FindViewById<TextView>(Resource.Id.textView1).Text = item.Name;
+            view.FindViewById<TextView>(Resource.Id.textView2).Text = item.Code;
+            view.FindViewById<ImageView>(Resource.Id.imageView1).SetImageResource(item.ImageResourceId);
 
-            FormUrlEncodedContent form = new FormUrlEncodedContent(dict);
-
-            var values = new Dictionary<string, string>{
-              { "productId", "1" },
-              { "productKey", "Abc6666" },
-              { "userName", "OPPO" },
-            };
-
-            var json = JsonConvert.SerializeObject(values, Formatting.Indented);
-
-            var stringContent = new StringContent(json);
-
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            HttpResponseMessage response = await client.PostAsync(helloUrl, stringContent);
-
-            string result = await response.Content.ReadAsStringAsync();
-
-            Utilits b = new Utilits();
-
-            string a = b.Name();  
-
-
-            Android.App.AlertDialog.Builder dialog = new Android.App.AlertDialog.Builder(this);
-            Android.App.AlertDialog alert = dialog.Create();
-            alert.SetTitle("Test");
-            alert.SetMessage("Привет, " + a);
-            alert.SetButton("ОК", (c, ev) =>
-            {
-                // Задача нажатия кнопки ОК  
-            });
-            alert.Show();
-
-
+            return view;
 
         }
+    }
 
+    public class ClothesType
+    {
+        public string Name { get; set; }
+        public string Code { get; set; }
+        public int ImageResourceId { get; set; }
+        public int id { get; set; }
+
+
+        public ClothesType(string Name, string Code, int ImageResourceId, int id)
+        {
+            this.Name = Name;
+            this.Code = Code;
+            this.ImageResourceId = ImageResourceId;
+            this.id = id;
+        }
 
     }
 }
