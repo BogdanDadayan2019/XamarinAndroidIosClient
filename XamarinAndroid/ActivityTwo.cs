@@ -15,30 +15,22 @@ namespace XamarinAndroid.Resources.layout
     public class ActivityTwo : Activity
     {
         List<Clothes> clothes = new List<Clothes>();
-        ListView listView1;
+        ListView listView;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.activity_two);
-            listView1 = FindViewById<ListView>(Resource.Id.listView1);
+            listView = FindViewById<ListView>(Resource.Id.listView2);
 
-            clothes.Add(new Clothes("T-shirt 1", Resource.Drawable.tshirt, 1));
-            clothes.Add(new Clothes("T-shirt 2", Resource.Drawable.tshirt, 2));
-            clothes.Add(new Clothes("T-shirt 3", Resource.Drawable.tshirt, 3));
-            clothes.Add(new Clothes("T-shirt 4", Resource.Drawable.tshirt, 4));
+            clothes.Add(new Clothes("T-shirt 1", Resource.Drawable.tshirt));
+            clothes.Add(new Clothes("T-shirt 2", Resource.Drawable.tshirt));
+            clothes.Add(new Clothes("T-shirt 3", Resource.Drawable.tshirt));
+            clothes.Add(new Clothes("T-shirt 4", Resource.Drawable.tshirt));
 
-            listView1.Adapter = new ClothesAdapter(this, clothes);
+            listView.Adapter = new ClothesAdapter(this, clothes);
 
-            listView1.ItemClick += ListView1_ItemClick;
-
-        }
-
-        private void ListView1_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
-        {
-            Intent intent = new Intent(this, typeof(ActivityTwo));
-            StartActivity(intent);
         }
 
         public class ClothesAdapter : BaseAdapter<Clothes>

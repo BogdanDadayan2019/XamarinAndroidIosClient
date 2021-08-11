@@ -9,27 +9,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace XamarinAndroid
+namespace XamarinAndroid.Resources.layout
 {
     [Activity(Label = "ActivityThree")]
     public class ActivityThree : Activity
     {
         List<Clothes> clothes = new List<Clothes>();
-        ListView listView2;
+        ListView listView;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.activity_three);
-            listView2 = FindViewById<ListView>(Resource.Id.listView2);
+            listView = FindViewById<ListView>(Resource.Id.listView3);
 
-            clothes.Add(new Clothes("Hoodie", Resource.Drawable.hoodie, 1));
-            clothes.Add(new Clothes("Hoodie", Resource.Drawable.hoodie, 2));
-            clothes.Add(new Clothes("Hoodie", Resource.Drawable.hoodie, 3));
-            clothes.Add(new Clothes("Hoodie", Resource.Drawable.hoodie, 4));
+            clothes.Add(new Clothes("Hoodie 1", Resource.Drawable.hoodie));
+            clothes.Add(new Clothes("Hoodie 2", Resource.Drawable.hoodie));
+            clothes.Add(new Clothes("Hoodie 3", Resource.Drawable.hoodie));
+            clothes.Add(new Clothes("Hoodie 4", Resource.Drawable.hoodie));
 
-            listView2.Adapter = new ClothesAdapter(this, clothes);
+            listView.Adapter = new ClothesAdapter(this, clothes);
+
         }
 
         public class ClothesAdapter : BaseAdapter<Clothes>
@@ -69,4 +70,5 @@ namespace XamarinAndroid
             }
         }
     }
+
 }

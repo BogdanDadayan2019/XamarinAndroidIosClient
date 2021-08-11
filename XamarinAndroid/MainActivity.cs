@@ -14,6 +14,7 @@ namespace DesignerWalkthrough
     {
         List<ClothesType> clothesTypes = new List<ClothesType>();
         ListView listView;
+        
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -21,48 +22,40 @@ namespace DesignerWalkthrough
             SetContentView(Resource.Layout.activity_main);
             listView = FindViewById<ListView>(Resource.Id.listView1);
 
-            ClothesType tshirt = new ClothesType("T-shirt", "T-shirt", Resource.Drawable.tshirt, 1);
-            ClothesType hoodie = new ClothesType("Hoodie", "худи", Resource.Drawable.hoodie, 2);
-            ClothesType cap = new ClothesType("Cap", "кепки", Resource.Drawable.cap, 3);
-            ClothesType socs = new ClothesType("Socs", "носки", Resource.Drawable.socs, 4);
-
-            clothesTypes.Add(tshirt);
-            clothesTypes.Add(hoodie);
-            clothesTypes.Add(cap);
-            clothesTypes.Add(socs);
-
+            clothesTypes.Add(new ClothesType("T-shirt", "футболки", Resource.Drawable.tshirt));
+            clothesTypes.Add(new ClothesType("Hoodie", "худи", Resource.Drawable.hoodie));
+            clothesTypes.Add(new ClothesType("Cap", "кепки", Resource.Drawable.cap));
+            clothesTypes.Add(new ClothesType("Socs", "носки", Resource.Drawable.socs));
+       
             listView.Adapter = new ClothesAdapter(this, clothesTypes);
-            listView.ItemClick += ListView_ItemClick;
 
+            listView.ItemClick += ListView_ItemClick;
         }
 
         private void ListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            Intent intent = new Intent(this, typeof(ActivityTwo));
-            StartActivity(intent);
+            var a = listView.GetItemAtPosition(e.Position);
 
+            if (e.Position == 0)
+            {
+                Intent intent = new Intent(this, typeof(ActivityTwo));
+                StartActivity(intent);
+            } else if (e.Position == 1)
+            {
+                Intent intent = new Intent(this, typeof(ActivityThree));
+                StartActivity(intent);
+            }
+            else if (e.Position == 2)
+            {
+                Intent intent = new Intent(this, typeof(ActivityFour));
+                StartActivity(intent);
+            }
+            else if (e.Position == 3)
+            {
+                Intent intent = new Intent(this, typeof(ActivityFive));
+                StartActivity(intent);
+            }
 
-            //var a = listView.GetItemAtPosition(e.Position);
-            //if (e.Position == tshirt.id)
-            //{
-            //    Intent intent = new Intent(this, typeof(ActivityThree));
-            //    StartActivity(intent);
-            //}
-            //else if (e.Position == hoodie.id)
-            //{
-            //    Intent intent = new Intent(this, typeof(ActivityTwo));
-            //    StartActivity(intent);
-            //}
-            //else if (e.Position == cap.id)
-            //{
-            //    Intent intent = new Intent(this, typeof(ActivityThree));
-            //    StartActivity(intent);
-            //}
-            //else if (e.Position == socs.id)
-            //{
-            //    Intent intent = new Intent(this, typeof(ActivityThree));
-            //    StartActivity(intent);
-            //}
         }
     }
 
@@ -109,15 +102,13 @@ namespace DesignerWalkthrough
         public string Name { get; set; }
         public string Code { get; set; }
         public int ImageResourceId { get; set; }
-        public int id { get; set; }
 
 
-        public ClothesType(string Name, string Code, int ImageResourceId, int id)
+        public ClothesType(string Name, string Code, int ImageResourceId)
         {
             this.Name = Name;
             this.Code = Code;
             this.ImageResourceId = ImageResourceId;
-            this.id = id;
         }
 
     }
