@@ -16,6 +16,7 @@ namespace XamarinAndroid.Resources.layout
     {
         List<Clothes> clothes = new List<Clothes>();
         ListView listView;
+        Button button;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -30,7 +31,15 @@ namespace XamarinAndroid.Resources.layout
             clothes.Add(new Clothes("Socs 4", Resource.Drawable.socs));
 
             listView.Adapter = new ClothesAdapter(this, clothes);
+            button = FindViewById<Button>(Resource.Id.button1);
+            button.Click += Button_Click;
 
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            clothes.Add(new Clothes("Basic", Resource.Drawable.socs));
+            listView.InvalidateViews();
         }
 
         public class ClothesAdapter : BaseAdapter<Clothes>

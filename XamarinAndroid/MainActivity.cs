@@ -14,6 +14,7 @@ namespace DesignerWalkthrough
     {
         List<ClothesType> clothesTypes = new List<ClothesType>();
         ListView listView;
+        Button button1;
         
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -30,6 +31,8 @@ namespace DesignerWalkthrough
             listView.Adapter = new ClothesAdapter(this, clothesTypes);
 
             listView.ItemClick += ListView_ItemClick;
+
+
         }
 
         private void ListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)

@@ -12,6 +12,30 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listView3"/>
+        android:id="@+id/listView3"
+        android:layout_alignBottom="@id/relativeLayoutBottom" />
+     
+        <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/relativeLayoutBottom">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px">
 
+            <Button
+                android:text="Button"
+                android:layout_width="match_parent"
+                android:layout_height="62.5dp"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:id="@+id/button1" />
+
+        </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>
+
