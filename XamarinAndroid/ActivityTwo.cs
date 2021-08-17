@@ -18,8 +18,11 @@ namespace XamarinAndroid.Resources.layout
         ListView listView;
         Button button;
 
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
+
+
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.activity_two);
@@ -82,17 +85,9 @@ namespace XamarinAndroid.Resources.layout
                 view.FindViewById<TextView>(Resource.Id.textView1).Text = item.Name;
                 view.FindViewById<ImageView>(Resource.Id.imageView1).SetImageResource(item.ImageResourceId);
 
-                button = view.FindViewById<Button>(Resource.Id.buttonChange);
-                button.Click += Button_Click1;
 
                 button2 = view.FindViewById<Button>(Resource.Id.buttonDelete);
                 button2.Click += Button_Click2;
-
-                void Button_Click1(object sender, EventArgs e)
-                {
-                    view.FindViewById<TextView>(Resource.Id.textView1).Text = "Changed";
-                    
-                }
 
                 void Button_Click2(object sender, EventArgs e)
                 {

@@ -17,6 +17,7 @@ namespace DesignerWalkthrough
         Button button1;
         
 
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);

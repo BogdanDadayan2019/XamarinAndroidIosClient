@@ -24,28 +24,26 @@
             android:minWidth="25px"
             android:minHeight="25px"
             android:layout_width="match_parent"
-            android:layout_height="93.5dp"
+            android:layout_height="83.5dp"
             android:id="@+id/linearLayout1"
             android:orientation="vertical"
             android:layout_marginBottom="5px"
             android:layout_marginLeft="5px"
             android:layout_marginRight="0px"
             android:layout_marginTop="5px">
-            <TextView
-                android:text="Large Text"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView1" />
-            <Button
-                android:text="Изменить"
-                android:layout_width="306.5dp"
-                android:layout_height="34.5dp"
-                android:id="@+id/buttonChange" />
+
+
+            <EditText
+                android:id="@+id/textView1"
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dp"
+                android:gravity="top"
+                android:hint="here"
+                android:scrollbars="vertical" />
             <Button
                 android:text="Удалить"
                 android:layout_width="306.5dp"
-                android:layout_height="34.5dp"
+                android:layout_height="37.5dp"
                 android:id="@+id/buttonDelete" />
         </LinearLayout>
 
