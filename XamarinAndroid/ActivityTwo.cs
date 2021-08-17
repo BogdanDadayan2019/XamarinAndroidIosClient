@@ -42,12 +42,18 @@ namespace XamarinAndroid.Resources.layout
         {
             clothes.Add(new Clothes("Basic", Resource.Drawable.tshirt));
             listView.InvalidateViews();
+
+
         }
 
         public class ClothesAdapter : BaseAdapter<Clothes>
         {
             List<Clothes> items;
             Activity context;
+            Button button;
+            Button button2;
+
+
             public ClothesAdapter(Activity context, List<Clothes> items)
                 : base()
             {
@@ -76,10 +82,27 @@ namespace XamarinAndroid.Resources.layout
                 view.FindViewById<TextView>(Resource.Id.textView1).Text = item.Name;
                 view.FindViewById<ImageView>(Resource.Id.imageView1).SetImageResource(item.ImageResourceId);
 
+                button = view.FindViewById<Button>(Resource.Id.buttonChange);
+                button.Click += Button_Click1;
+
+                button2 = view.FindViewById<Button>(Resource.Id.buttonDelete);
+                button2.Click += Button_Click2;
+
+                void Button_Click1(object sender, EventArgs e)
+                {
+                    view.FindViewById<TextView>(Resource.Id.textView1).Text = "Changed";
+                    
+                }
+
+                void Button_Click2(object sender, EventArgs e)
+                {
+                
+                }
 
                 return view;
 
             }
+            
         }
     }
     

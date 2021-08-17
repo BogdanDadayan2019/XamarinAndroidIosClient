@@ -66,6 +66,7 @@ namespace DesignerWalkthrough
     {
         List<ClothesType> items;
         Activity context;
+
         public ClothesAdapter(Activity context, List<ClothesType> items)
             : base()
         {

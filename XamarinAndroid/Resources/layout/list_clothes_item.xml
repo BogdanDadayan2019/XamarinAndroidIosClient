@@ -41,12 +41,12 @@
                 android:text="Изменить"
                 android:layout_width="306.5dp"
                 android:layout_height="34.5dp"
-                android:id="@+id/button2" />
+                android:id="@+id/buttonChange" />
             <Button
                 android:text="Удалить"
                 android:layout_width="306.5dp"
                 android:layout_height="34.5dp"
-                android:id="@+id/button1" />
+                android:id="@+id/buttonDelete" />
         </LinearLayout>
 
     </LinearLayout>
