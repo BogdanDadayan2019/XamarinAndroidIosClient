@@ -14,9 +14,6 @@ namespace DesignerWalkthrough
     {
         List<ClothesType> clothesTypes = new List<ClothesType>();
         ListView listView;
-        Button button1;
-        
-
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -29,17 +26,14 @@ namespace DesignerWalkthrough
             clothesTypes.Add(new ClothesType("Cap", "кепки", Resource.Drawable.cap));
             clothesTypes.Add(new ClothesType("Socs", "носки", Resource.Drawable.socs));
        
-            listView.Adapter = new ClothesAdapter(this, clothesTypes);
+            listView.Adapter = new ClothesTypeAdapter(this, clothesTypes);
 
             listView.ItemClick += ListView_ItemClick;
-
 
         }
 
         private void ListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            var a = listView.GetItemAtPosition(e.Position);
-
             if (e.Position == 0)
             {
                 Intent intent = new Intent(this, typeof(ActivityTwo));
@@ -61,60 +55,5 @@ namespace DesignerWalkthrough
             }
 
         }
-    }
-
-    public class ClothesAdapter : BaseAdapter<ClothesType>
-    {
-        List<ClothesType> items;
-        Activity context;
-
-        public ClothesAdapter(Activity context, List<ClothesType> items)
-            : base()
-        {
-            this.context = context;
-            this.items = items;
-        }
-        public override long GetItemId(int position)
-        {
-            return position;
-        }
-        public override ClothesType this[int position]
-        {
-            get { return items[position]; }
-        }
-        public override int Count
-        {
-            get { return items.Count; }
-        }
-        public override View GetView(int position, View convertView, ViewGroup parent)
-        {
-            var item = items[position];
-
-            View view = convertView;
-            if (view == null)
-                view = context.LayoutInflater.Inflate(Resource.Layout.list_item, null);
-            view.FindViewById<TextView>(Resource.Id.textView1).Text = item.Name;
-            view.FindViewById<TextView>(Resource.Id.textView2).Text = item.Code;
-            view.FindViewById<ImageView>(Resource.Id.imageView1).SetImageResource(item.ImageResourceId);
-
-            return view;
-
-        }
-    }
-
-    public class ClothesType
-    {
-        public string Name { get; set; }
-        public string Code { get; set; }
-        public int ImageResourceId { get; set; }
-
-
-        public ClothesType(string Name, string Code, int ImageResourceId)
-        {
-            this.Name = Name;
-            this.Code = Code;
-            this.ImageResourceId = ImageResourceId;
-        }
-
     }
 }

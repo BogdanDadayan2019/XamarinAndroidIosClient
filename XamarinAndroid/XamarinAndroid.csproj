@@ -72,8 +72,10 @@
     <Compile Include="ActivityFour.cs" />
     <Compile Include="ActivityThree.cs" />
     <Compile Include="ActivityTwo.cs" />
-    <Compile Include="AlertOk.cs" />
     <Compile Include="Clothes.cs" />
+    <Compile Include="ClothesAdapter.cs" />
+    <Compile Include="ClothesType.cs" />
+    <Compile Include="ClothesTypeAdapter.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -156,11 +158,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_five.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\alertOk.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
