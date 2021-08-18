@@ -32,12 +32,15 @@ namespace DesignerWalkthrough
 
         }
 
+
+
         private void ListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             if (e.Position == 0)
             {
                 Intent intent = new Intent(this, typeof(ActivityTwo));
                 StartActivity(intent);
+
             } else if (e.Position == 1)
             {
                 Intent intent = new Intent(this, typeof(ActivityThree));

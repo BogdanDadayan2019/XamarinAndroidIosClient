@@ -13,11 +13,11 @@ namespace XamarinAndroid
 {
     public class ClothesAdapter : BaseAdapter<Clothes>
     {
+
         List<Clothes> items;
         Activity context;
         Button button1;
         Button button2;
-
 
         public ClothesAdapter(Activity context, List<Clothes> items)
             : base()
@@ -58,22 +58,40 @@ namespace XamarinAndroid
             {
                 items.Remove(item);
                 NotifyDataSetChanged();
-                // обновить адаптер 1
-                //создать для алерта вьюшку с полем для ввода текста 2
+            }
+
+             void Button1_Click(object sender, EventArgs e)
+            {
+
+                LayoutInflater layoutInflater = LayoutInflater.From(Application.Context);
+                View view = layoutInflater.Inflate(Resource.Layout.update_clothes_layout, null);
+
+
+                AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+                EditText editText = view.FindViewById<EditText>(Resource.Id.editText1);
+                dialog.SetView(view);
+                AlertDialog alert = dialog.Create();
+                alert.SetTitle("Taking Input");
+
+                alert.SetButton("Ok", (s, e) =>
+                {
+                    if (editText.Text.Equals(""))
+                    {
+                        item.Name = item.Name;
+                    }
+                    else
+                    {
+                        item.Name = editText.Text;
+                    }
+                });
+
+                alert.Show();
 
             }
 
             return view;
 
         }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-            AlertDialog alert = dialog.Create();
-            alert.SetTitle("Changed");
-            alert.SetMessage("hi");
-            alert.Show();
-        }
+        
     }
 }

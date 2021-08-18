@@ -28,7 +28,7 @@
             android:minHeight="25px">
 
             <Button
-                android:text="Button"
+                android:text="ADD"
                 android:layout_width="match_parent"
                 android:layout_height="62.5dp"
                 android:minWidth="25px"

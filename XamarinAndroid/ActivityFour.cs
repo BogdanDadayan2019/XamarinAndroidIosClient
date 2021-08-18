@@ -30,7 +30,6 @@ namespace XamarinAndroid.Resources.layout
             clothes.Add(new Clothes("Cap 3", Resource.Drawable.cap));
             clothes.Add(new Clothes("Cap 4", Resource.Drawable.cap));
 
-
             listView.Adapter = new ClothesAdapter(this, clothes);
             button = FindViewById<Button>(Resource.Id.button1);
             button.Click += Button_Click;
