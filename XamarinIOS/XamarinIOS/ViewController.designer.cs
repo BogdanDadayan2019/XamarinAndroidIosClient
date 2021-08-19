@@ -13,13 +13,37 @@ namespace XamarinIOS
 	partial class ViewController
 	{
 		[Outlet]
+		UIKit.UITableView bdTableView { get; set; }
+
+		[Outlet]
+		UIKit.UITableViewCell bdTableViewCell { get; set; }
+
+		[Outlet]
 		UIKit.UIButton btnPress { get; set; }
+
+		[Outlet]
+		UIKit.UILabel dd { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (bdTableView != null) {
+				bdTableView.Dispose ();
+				bdTableView = null;
+			}
+
+			if (bdTableViewCell != null) {
+				bdTableViewCell.Dispose ();
+				bdTableViewCell = null;
+			}
+
 			if (btnPress != null) {
 				btnPress.Dispose ();
 				btnPress = null;
+			}
+
+			if (dd != null) {
+				dd.Dispose ();
+				dd = null;
 			}
 		}
 	}

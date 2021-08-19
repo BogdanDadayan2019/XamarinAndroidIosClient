@@ -116,9 +116,24 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Image.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Resources\Assets.xcassets\t-shirt.imageset\t-shirt.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\t-shirt.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Assets.xcassets\socs.imageset\socs.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\socs.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Assets.xcassets\hoodie.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Assets.xcassets\hoodie.imageset\hoodie.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\hoodie-1.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Assets.xcassets\hoodie-1.imageset\hoodie.png" />
+    <ImageAsset Include="Assets.xcassets\.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Assets.xcassets\caps.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Assets.xcassets\caps.imageset\caps.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Resources\drawling\" />
+    <Folder Include="Assets.xcassets\.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -136,6 +151,20 @@
     <Compile Include="ViewController.designer.cs">
       <DependentUpon>ViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmployeeCell.cs" />
+    <Compile Include="EmployeeCell.designer.cs">
+      <DependentUpon>EmployeeCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs" />
+    <Compile Include="EmployeesTVS.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\EmployeesTableApp.swift" />
+    <BundleResource Include="Resources\EmployeeCell.swift" />
+    <BundleResource Include="Resources\drawling\t-shirt.png" />
+    <BundleResource Include="Resources\drawling\socs.png" />
+    <BundleResource Include="Resources\drawling\hoodie.png" />
+    <BundleResource Include="Resources\drawling\caps.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
