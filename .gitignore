@@ -3,3 +3,6 @@ XamarinIOS/XamarinIOS/bin/
 XamarinIOS/XamarinIOS/obj/
 XamarinAndroid/bin/
 XamarinIOS/.vs/
+.vs/
+SharedLibs/bin/
+SharedLibs/obj/
