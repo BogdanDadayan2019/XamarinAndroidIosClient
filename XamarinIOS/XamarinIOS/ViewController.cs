@@ -7,14 +7,14 @@ namespace XamarinIOS
 {
     public partial class ViewController : UIViewController
     {
-        public ViewController (IntPtr handle) : base (handle)
+        public ViewController(IntPtr handle) : base(handle)
         {
         }
 
-        public override void ViewDidLoad ()
+        public override void ViewDidLoad()
         {
-            base.ViewDidLoad ();
-            
+            base.ViewDidLoad();
+
 
             var employees = new List<Employee>
             {
@@ -52,24 +52,19 @@ namespace XamarinIOS
                 PresentViewController(alert, true, null);
             };
 
-            
+
 
             bdTableView.RowHeight = 60;
-           
+
             bdTableView.ReloadData();
 
             bdTableView.Source = new EmployeesTVS(employees);
 
-
-   
-
-
-
         }
 
-        public override void DidReceiveMemoryWarning ()
+        public override void DidReceiveMemoryWarning()
         {
-            base.DidReceiveMemoryWarning ();
+            base.DidReceiveMemoryWarning();
             // Release any cached data, images, etc that aren't in use.
         }
     }

@@ -6,5 +6,6 @@
     <SelectedDevice>Nexus_5X_API_29_x86</SelectedDevice>
     <ActiveDebugProfile>Nexus_5X_API_29_x86</ActiveDebugProfile>
     <DefaultDevice>Nexus_5X_API_29_x86</DefaultDevice>
+    <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
 </Project>

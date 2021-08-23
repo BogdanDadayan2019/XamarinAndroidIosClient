@@ -1,88 +1,62 @@
 ﻿using Android.App;
-using Android.OS;
-using Android.Runtime;
 using Android.Widget;
-using AndroidX.AppCompat.App;
-using Newtonsoft.Json;
-using System;
+using Android.Views;
+using Android.OS;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
+using XamarinAndroid;
+using Android.Content;
+using XamarinAndroid.Resources.layout;
 
-namespace XamarinAndroid
+namespace DesignerWalkthrough
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
-    public class MainActivity : AppCompatActivity
+    [Activity(Label = "Wardrobe", Theme = "@style/AppTheme", MainLauncher = true)]
+    public class MainActivity : AndroidX.AppCompat.App.AppCompatActivity
     {
-        Button button1;
-
-        private static readonly HttpClient client = new HttpClient();
-
-        private readonly string helloUrl = "http://192.168.0.188:5000/api/values/";
-
-
-        private Task AlertDialog(string v1, string v2, string v)
-        {
-            throw new NotImplementedException();
-        }
+        List<ClothesType> clothesTypes = new List<ClothesType>();
+        ListView listView;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
+            listView = FindViewById<ListView>(Resource.Id.listView1);
 
-            button1 = FindViewById<Button>(Resource.Id.button1);
+            clothesTypes.Add(new ClothesType("T-shirt", "футболки", Resource.Drawable.tshirt));
+            clothesTypes.Add(new ClothesType("Hoodie", "худи", Resource.Drawable.hoodie));
+            clothesTypes.Add(new ClothesType("Cap", "кепки", Resource.Drawable.cap));
+            clothesTypes.Add(new ClothesType("Socs", "носки", Resource.Drawable.socs));
+       
+            listView.Adapter = new ClothesTypeAdapter(this, clothesTypes);
 
-            button1.Click += button1_click;
-
+            listView.ItemClick += ListView_ItemClick;
 
         }
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+
+
+
+        private void ListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
-
-        private async void button1_click(object sender, EventArgs e)
-        {
-
-            JavaDictionary<string, string> dict = new JavaDictionary<string, string>()
+            if (e.Position == 0)
             {
-                { "s", "Vasya"}
-            };
+                Intent intent = new Intent(this, typeof(ActivityTwo));
+                StartActivity(intent);
 
-            FormUrlEncodedContent form = new FormUrlEncodedContent(dict);
-
-            var values = new Dictionary<string, string>{
-              { "productId", "1" },
-              { "productKey", "Abc6666" },
-              { "userName", "OPPO" },
-            };
-
-            var json = JsonConvert.SerializeObject(values, Formatting.Indented);
-
-            var stringContent = new StringContent(json);
-
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            HttpResponseMessage response = await client.PostAsync(helloUrl, stringContent);
-
-            string result = await response.Content.ReadAsStringAsync();
-
-            Android.App.AlertDialog.Builder dialog = new Android.App.AlertDialog.Builder(this);
-            Android.App.AlertDialog alert = dialog.Create();
-            alert.SetTitle("Test");
-            alert.SetMessage("Привет, " + result);
-            alert.SetButton("ОК", (c, ev) =>
+            } else if (e.Position == 1)
             {
-                // Задача нажатия кнопки ОК  
-            });
-            alert.Show();
+                Intent intent = new Intent(this, typeof(ActivityThree));
+                StartActivity(intent);
+            }
+            else if (e.Position == 2)
+            {
+                Intent intent = new Intent(this, typeof(ActivityFour));
+                StartActivity(intent);
+            }
+            else if (e.Position == 3)
+            {
+                Intent intent = new Intent(this, typeof(ActivityFive));
+                StartActivity(intent);
+            }
+
         }
-
-
     }
 }
