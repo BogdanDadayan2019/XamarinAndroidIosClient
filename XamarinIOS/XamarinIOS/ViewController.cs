@@ -54,7 +54,7 @@ namespace XamarinIOS
 
 
 
-            bdTableView.RowHeight = 62;
+            bdTableView.RowHeight = 60;
 
             bdTableView.ReloadData();
 
