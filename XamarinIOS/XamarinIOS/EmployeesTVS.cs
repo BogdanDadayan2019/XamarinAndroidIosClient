@@ -20,7 +20,6 @@ namespace XamarinIOS
 
             var employee = employees[indexPath.Row];
 
-
             cell.UpdateCell(employee);
 
             return cell;

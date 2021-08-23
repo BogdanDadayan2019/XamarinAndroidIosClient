@@ -157,6 +157,20 @@
     </Compile>
     <Compile Include="Employee.cs" />
     <Compile Include="EmployeesTVS.cs" />
+    <Compile Include="SceneDelegate.designer.cs">
+      <DependentUpon>SceneDelegate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clothes.cs" />
+    <Compile Include="ClothesTVS.cs" />
+    <Compile Include="_bdCell.cs" />
+    <Compile Include="_bdCell.designer.cs">
+      <DependentUpon>_bdCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_bdView.cs" />
+    <Compile Include="_bdView.designer.cs">
+      <DependentUpon>_bdView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClothesDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\EmployeesTableApp.swift" />
@@ -165,6 +179,7 @@
     <BundleResource Include="Resources\drawling\socs.png" />
     <BundleResource Include="Resources\drawling\hoodie.png" />
     <BundleResource Include="Resources\drawling\caps.png" />
+    <BundleResource Include="Resources\.DS_Store" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
