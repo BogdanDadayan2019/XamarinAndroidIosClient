@@ -9,25 +9,25 @@ using System.CodeDom.Compiler;
 
 namespace XamarinIOS
 {
-	[Register ("_bdCell")]
-	partial class _bdCell
+	[Register ("HoodieCell")]
+	partial class HoodieCell
 	{
 		[Outlet]
-		UIKit.UIImageView _bdImage { get; set; }
+		UIKit.UIImageView bdImage { get; set; }
 
 		[Outlet]
-		UIKit.UILabel _bdLabel { get; set; }
+		UIKit.UILabel bdLabel { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (_bdLabel != null) {
-				_bdLabel.Dispose ();
-				_bdLabel = null;
+			if (bdImage != null) {
+				bdImage.Dispose ();
+				bdImage = null;
 			}
 
-			if (_bdImage != null) {
-				_bdImage.Dispose ();
-				_bdImage = null;
+			if (bdLabel != null) {
+				bdLabel.Dispose ();
+				bdLabel = null;
 			}
 		}
 	}

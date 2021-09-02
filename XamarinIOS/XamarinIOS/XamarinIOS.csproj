@@ -163,6 +163,12 @@
     <Folder Include="Resources\" />
     <Folder Include="Resources\drawling\" />
     <Folder Include="Assets.xcassets\.imageset\" />
+    <Folder Include="t-shirt_View\" />
+    <Folder Include="hoodie_View\" />
+    <Folder Include="cap_View\" />
+    <Folder Include="socs_View\" />
+    <Folder Include="clothesType_View\" />
+    <Folder Include="Clothes\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -176,30 +182,61 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="SceneDelegate.cs" />
-    <Compile Include="ViewController.cs" />
-    <Compile Include="ViewController.designer.cs">
-      <DependentUpon>ViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EmployeeCell.cs" />
-    <Compile Include="EmployeeCell.designer.cs">
-      <DependentUpon>EmployeeCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Employee.cs" />
-    <Compile Include="EmployeesTVS.cs" />
     <Compile Include="SceneDelegate.designer.cs">
       <DependentUpon>SceneDelegate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Clothes.cs" />
-    <Compile Include="ClothesTVS.cs" />
-    <Compile Include="_bdCell.cs" />
-    <Compile Include="_bdCell.designer.cs">
-      <DependentUpon>_bdCell.cs</DependentUpon>
+    <Compile Include="clothesType_View\ClothesType.cs" />
+    <Compile Include="hoodie_View\HoodieCell.cs" />
+    <Compile Include="hoodie_View\HoodieCell.designer.cs">
+      <DependentUpon>HoodieCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="_bdView.cs" />
-    <Compile Include="_bdView.designer.cs">
-      <DependentUpon>_bdView.cs</DependentUpon>
+    <Compile Include="hoodie_View\HoodieViewController.cs" />
+    <Compile Include="hoodie_View\HoodieViewController.designer.cs">
+      <DependentUpon>HoodieViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClothesDelegate.cs" />
+    <Compile Include="Clothes\Clothes.cs" />
+    <Compile Include="Clothes\ClothesDelegate.cs" />
+    <Compile Include="socs_View\SocsCell.cs" />
+    <Compile Include="socs_View\SocsCell.designer.cs">
+      <DependentUpon>SocsCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="socs_View\SocsViewController.cs" />
+    <Compile Include="socs_View\SocsViewController.designer.cs">
+      <DependentUpon>SocsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="hoodie_View\HoodieTVS.cs" />
+    <Compile Include="cap_View\CapTVS.cs" />
+    <Compile Include="socs_View\SocsTVS.cs" />
+    <Compile Include="clothesType_View\ClothesTypeTVS.cs" />
+    <Compile Include="cap_View\_CapCell.cs" />
+    <Compile Include="cap_View\_CapCell.designer.cs">
+      <DependentUpon>_CapCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cap_View\_CapViewController.cs" />
+    <Compile Include="cap_View\_CapViewController.designer.cs">
+      <DependentUpon>_CapViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="t-shirt_View\_TshirtCell.cs" />
+    <Compile Include="t-shirt_View\_TshirtCell.designer.cs">
+      <DependentUpon>_TshirtCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="t-shirt_View\_TshirtViewController.cs" />
+    <Compile Include="t-shirt_View\_TshirtViewController.designer.cs">
+      <DependentUpon>_TshirtViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="t-shirt_View\TshirtTVS.cs" />
+    <Compile Include="clothesType_View\_bdNavigation.cs" />
+    <Compile Include="clothesType_View\_bdNavigation.designer.cs">
+      <DependentUpon>_bdNavigation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="clothesType_View\_ClothesTypeCell.cs" />
+    <Compile Include="clothesType_View\_ClothesTypeCell.designer.cs">
+      <DependentUpon>_ClothesTypeCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="clothesType_View\_ClothesTypeViewController.cs" />
+    <Compile Include="clothesType_View\_ClothesTypeViewController.designer.cs">
+      <DependentUpon>_ClothesTypeViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\EmployeesTableApp.swift" />
