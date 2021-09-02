@@ -119,19 +119,45 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\Image.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Assets.xcassets\Contents.json" />
-    <ImageAsset Include="Resources\Assets.xcassets\t-shirt.imageset\t-shirt.png" />
-    <ImageAsset Include="Resources\Assets.xcassets\t-shirt.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Assets.xcassets\socs.imageset\socs.png" />
-    <ImageAsset Include="Resources\Assets.xcassets\socs.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Assets.xcassets\hoodie.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Assets.xcassets\hoodie.imageset\hoodie.png" />
-    <ImageAsset Include="Resources\Assets.xcassets\hoodie-1.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Assets.xcassets\hoodie-1.imageset\hoodie.png" />
-    <ImageAsset Include="Assets.xcassets\.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Assets.xcassets\caps.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Assets.xcassets\caps.imageset\caps.png" />
+    <ImageAsset Include="Assets.xcassets\Image.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\t-shirt.imageset\t-shirt.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\t-shirt.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\socs.imageset\socs.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\socs.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\hoodie.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\hoodie.imageset\hoodie.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\hoodie-1.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\hoodie-1.imageset\hoodie.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\caps.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\caps.imageset\caps.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
