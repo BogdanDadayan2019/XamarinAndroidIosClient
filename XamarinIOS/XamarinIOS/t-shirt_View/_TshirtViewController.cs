@@ -7,9 +7,9 @@ using UIKit;
 
 namespace XamarinIOS
 {
-	public partial class _bdView : UIViewController
+	public partial class _TshirtViewController : UIViewController
 	{
-		public _bdView(IntPtr handle) : base(handle)
+		public _TshirtViewController (IntPtr handle) : base (handle)
 		{
 		}
 
@@ -17,63 +17,59 @@ namespace XamarinIOS
 		{
 			base.ViewDidLoad();
 
-			
-
 			var clothes = new List<Clothes>
 			{
 				new Clothes
 				{
-					Name = "T-SHIRT 1",
+					Name = "T-shirt 1",
 					BdImage = UIImage.FromBundle("t-shirt")
 				},
 				new Clothes
 				{
-					Name = "T-SHIRT 2",
+					Name = "T-shirt 2",
 					BdImage = UIImage.FromBundle("t-shirt")
 				},
 				new Clothes
 				{
-					Name = "T-SHIRT 3",
+					Name = "T-shirt 3",
 					BdImage = UIImage.FromBundle("t-shirt")
 				},
 				new Clothes
 				{
-					Name = "T-SHIRT 4",
+					Name = "T-shirt 4",
 					BdImage = UIImage.FromBundle("t-shirt")
 				},
 				new Clothes
 				{
-					Name = "T-SHIRT 5",
+					Name = "T-shirt 5",
 					BdImage = UIImage.FromBundle("t-shirt")
 				}
 
-
-
 			};
 
-			_bdTable.RowHeight = 70;
+			TshirtTableView.RowHeight = 60;
 
-			_bdTable.Source = new ClothesTVS(clothes);
+			TshirtTableView.Source = new TshirtTVS(clothes);
 
-			_bdTable.Delegate = new ClothesDelegate(clothes);
+			TshirtTableView.Delegate = new ClothesDelegate(clothes, this);
 
-			_bdTable.ReloadData();
+			TshirtTableView.ReloadData();
 
-			_bdButton.TouchUpInside += (object sender, EventArgs e) =>
+			bdButton.Clicked += (object sender, EventArgs e) =>
 			{
-				clothes.Add(new Clothes { Name = "BASIC", BdImage = UIImage.FromBundle("t-shirt") }) ;
 
-				_bdTable.ReloadData();
+				clothes.Add(new Clothes { Name = "BASIC", BdImage = UIImage.FromBundle("t-shirt") });
+
+				TshirtTableView.ReloadData();
+
 			};
-
 
 		}
-
 
 		public override void DidReceiveMemoryWarning()
 		{
 			base.DidReceiveMemoryWarning();
-			// Release any cached data, images, etc that aren't in use.
+			
 		}
 	}
 }

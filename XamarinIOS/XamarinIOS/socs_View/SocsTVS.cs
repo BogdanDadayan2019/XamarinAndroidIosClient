@@ -7,18 +7,18 @@ using UIKit;
 
 namespace XamarinIOS
 {
-    internal class ClothesTVS : UITableViewSource
+    internal class SocsTVS : UITableViewSource
     {
         private List<Clothes> clothes;
 
-        public ClothesTVS(List<Clothes> clothes)
+        public SocsTVS(List<Clothes> clothes)
         {
             this.clothes = clothes;
         }
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
-            var cell = (_bdCell) tableView.DequeueReusableCell("cell_id", indexPath);
+            var cell = (SocsCell)tableView.DequeueReusableCell("cell_id", indexPath);
 
             var _clothes = clothes[indexPath.Row];
 

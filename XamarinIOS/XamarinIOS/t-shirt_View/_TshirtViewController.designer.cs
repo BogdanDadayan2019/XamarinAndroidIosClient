@@ -9,25 +9,25 @@ using System.CodeDom.Compiler;
 
 namespace XamarinIOS
 {
-	[Register ("EmployeeCell")]
-	partial class EmployeeCell
+	[Register ("_TshirtViewController")]
+	partial class _TshirtViewController
 	{
 		[Outlet]
-		UIKit.UIImageView bdImageCell { get; set; }
+		UIKit.UIBarButtonItem bdButton { get; set; }
 
 		[Outlet]
-		UIKit.UILabel bdLabelCell1 { get; set; }
+		UIKit.UITableView TshirtTableView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (bdLabelCell1 != null) {
-				bdLabelCell1.Dispose ();
-				bdLabelCell1 = null;
+			if (TshirtTableView != null) {
+				TshirtTableView.Dispose ();
+				TshirtTableView = null;
 			}
 
-			if (bdImageCell != null) {
-				bdImageCell.Dispose ();
-				bdImageCell = null;
+			if (bdButton != null) {
+				bdButton.Dispose ();
+				bdButton = null;
 			}
 		}
 	}

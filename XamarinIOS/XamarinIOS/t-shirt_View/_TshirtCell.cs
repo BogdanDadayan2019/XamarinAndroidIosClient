@@ -7,16 +7,16 @@ using UIKit;
 
 namespace XamarinIOS
 {
-	public partial class _bdCell : UITableViewCell
+	public partial class _TshirtCell : UITableViewCell
 	{
-		public _bdCell (IntPtr handle) : base (handle)
+		public _TshirtCell (IntPtr handle) : base (handle)
 		{
 		}
 
 		internal void UpdateCell(Clothes clothess)
 		{
-			_bdLabel.Text = clothess.Name;
-			_bdImage.Image = clothess.BdImage;
+			bdLabel.Text = clothess.Name;
+			bdImage.Image = clothess.BdImage;
 		}
 	}
 }

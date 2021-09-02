@@ -7,19 +7,19 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace XamarinIOS
+namespace XamarinIOS.tshirt_View
 {
 	[Register ("_bdView")]
 	partial class _bdView
 	{
 		[Outlet]
-		UIKit.UIButton _bdButton { get; set; }
-
-		[Outlet]
 		UIKit.UITableView _bdTable { get; set; }
 
 		[Outlet]
 		UIKit.UITableView _bdTableCell { get; set; }
+
+		[Outlet]
+		UIKit.UIBarButtonItem bdButton2 { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -33,9 +33,9 @@ namespace XamarinIOS
 				_bdTableCell = null;
 			}
 
-			if (_bdButton != null) {
-				_bdButton.Dispose ();
-				_bdButton = null;
+			if (bdButton2 != null) {
+				bdButton2.Dispose ();
+				bdButton2 = null;
 			}
 		}
 	}
