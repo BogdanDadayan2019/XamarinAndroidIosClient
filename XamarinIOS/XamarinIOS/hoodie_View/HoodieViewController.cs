@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using Foundation;
+using SharedProject;
 using UIKit;
 
 namespace XamarinIOS
@@ -17,49 +18,52 @@ namespace XamarinIOS
 		{
 			base.ViewDidLoad();
 
-			var clothes = new List<Clothes>
-			{
-				new Clothes
-				{
-					Name = "Hoodie 1",
-					BdImage = UIImage.FromBundle("hoodie")
-				},
-				new Clothes
-				{
-					Name = "Hoodie 2",
-					BdImage = UIImage.FromBundle("hoodie")
-				},
-				new Clothes
-				{
-					Name = "Hoodie 3",
-					BdImage = UIImage.FromBundle("hoodie")
-				},
-				new Clothes
-				{
-					Name = "Hoodie 4",
-					BdImage = UIImage.FromBundle("hoodie")
-				},
-				new Clothes
-				{
-					Name = "Hoodie 5",
-					BdImage = UIImage.FromBundle("hoodie")
-				}
+            SharedData<UIImage> shared = new SharedData<UIImage>();
+            {
 
-			};
+                shared.AddClothesForList("Hoodie1", UIImage.FromBundle("hoodie"));
 
-			HoodieTableView.RowHeight = 60;
+                //	new Clothes
+                //	{
+                //		Name = "Hoodie 1",
+                //		BdImage = UIImage.FromBundle("hoodie")
+                //	},
+                //	new Clothes
+                //	{
+                //		Name = "Hoodie 2",
+                //		BdImage = UIImage.FromBundle("hoodie")
+                //	},
+                //	new Clothes
+                //	{
+                //		Name = "Hoodie 3",
+                //		BdImage = UIImage.FromBundle("hoodie")
+                //	},
+                //	new Clothes
+                //	{
+                //		Name = "Hoodie 4",
+                //		BdImage = UIImage.FromBundle("hoodie")
+                //	},
+                //	new Clothes
+                //	{
+                //		Name = "Hoodie 5",
+                //		BdImage = UIImage.FromBundle("hoodie")
+                //	}
 
-			HoodieTableView.Source = new HoodieTVS(clothes);
+            };
 
-			HoodieTableView.Delegate = new ClothesDelegate(clothes, this);
+            HoodieTableView.RowHeight = 60;
+
+			HoodieTableView.Source = new HoodieTVS(shared);
+
+			HoodieTableView.Delegate = new ClothesDelegate(shared, this);
 
 			HoodieTableView.ReloadData();
 
 			bdButton.Clicked += (object sender, EventArgs e) =>
 			{
-				clothes.Add(new Clothes { Name = "BASIC", BdImage = UIImage.FromBundle("hoodie") });
+                shared.AddClothesForList("Basic", UIImage.FromBundle("hoodie"));
 
-				HoodieTableView.ReloadData();
+                HoodieTableView.ReloadData();
 			};
 
 		}

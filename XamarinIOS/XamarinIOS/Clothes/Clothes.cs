@@ -6,18 +6,18 @@ namespace XamarinIOS
 {
     internal class Clothes
     {
-        public string Name
-        {
-            get;
+        //public string Name
+        //{
+        //    get;
 
-            set;
-        }
+        //    set;
+        //}
 
-        public UIImage BdImage
-        {
-            get;
+        //public UIImage BdImage
+        //{
+        //    get;
 
-            set;
-        }
+        //    set;
+        //}
     }
 }

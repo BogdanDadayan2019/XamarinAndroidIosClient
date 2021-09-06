@@ -8,13 +8,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SharedProject;
 
 namespace XamarinAndroid.Resources.layout
 {
     [Activity(Label = "ActivityFive")]
     public class ActivityFive : Activity
     {
-        List<Clothes> clothes = new List<Clothes>();
+        SharedData<int> shared = new SharedData<int>();
         ListView listView;
         Button button;
 
@@ -25,12 +26,12 @@ namespace XamarinAndroid.Resources.layout
             SetContentView(Resource.Layout.activity_five);
             listView = FindViewById<ListView>(Resource.Id.listView5);
 
-            clothes.Add(new Clothes("Socs 1", Resource.Drawable.socs));
-            clothes.Add(new Clothes("Socs 2", Resource.Drawable.socs));
-            clothes.Add(new Clothes("Socs 3", Resource.Drawable.socs));
-            clothes.Add(new Clothes("Socs 4", Resource.Drawable.socs));
+            shared.AddClothesForList("Socs 1", Resource.Drawable.socs);
+            shared.AddClothesForList("Socs 2", Resource.Drawable.socs);
+            shared.AddClothesForList("Socs 3", Resource.Drawable.socs);
+            shared.AddClothesForList("Socs 4", Resource.Drawable.socs);
 
-            listView.Adapter = new ClothesAdapter(this, clothes);
+            listView.Adapter = new ClothesAdapter(this, shared.clothes);
             button = FindViewById<Button>(Resource.Id.button1);
             button.Click += Button_Click;
 
@@ -38,7 +39,7 @@ namespace XamarinAndroid.Resources.layout
 
         private void Button_Click(object sender, EventArgs e)
         {
-            clothes.Add(new Clothes("Basic", Resource.Drawable.socs));
+            shared.AddClothesForList("Basic", Resource.Drawable.socs);
             listView.InvalidateViews();
         }
 

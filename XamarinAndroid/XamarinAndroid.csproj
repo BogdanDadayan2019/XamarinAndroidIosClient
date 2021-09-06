@@ -72,7 +72,6 @@
     <Compile Include="ActivityFour.cs" />
     <Compile Include="ActivityThree.cs" />
     <Compile Include="ActivityTwo.cs" />
-    <Compile Include="Clothes.cs" />
     <Compile Include="ClothesAdapter.cs" />
     <Compile Include="ClothesType.cs" />
     <Compile Include="ClothesTypeAdapter.cs" />

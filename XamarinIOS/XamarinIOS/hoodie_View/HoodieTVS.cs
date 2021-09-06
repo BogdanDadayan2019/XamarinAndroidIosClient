@@ -3,24 +3,25 @@
 using System;
 using System.Collections.Generic;
 using Foundation;
+using SharedProject;
 using UIKit;
 
 namespace XamarinIOS
 {
     internal class HoodieTVS : UITableViewSource
     {
-        private List<Clothes> clothes;
+        SharedData<UIImage> shared = new SharedData<UIImage>();
 
-        public HoodieTVS(List<Clothes> clothes)
+        public HoodieTVS(SharedData<UIImage> shared)
         {
-            this.clothes = clothes;
+            this.shared.clothes = shared.clothes;
         }
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
             var cell = (HoodieCell)tableView.DequeueReusableCell("cell_id", indexPath);
 
-            var _clothes = clothes[indexPath.Row];
+            var _clothes = shared.clothes[indexPath.Row];
 
             cell.UpdateCell(_clothes);
 
@@ -29,7 +30,7 @@ namespace XamarinIOS
 
         public override nint RowsInSection(UITableView tableview, nint section)
         {
-            return clothes.Count;
+            return shared.clothes.Count;
         }
     }
 }

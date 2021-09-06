@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using Foundation;
 using UIKit;
+using SharedProject;
 
 namespace XamarinIOS
 {
@@ -17,48 +18,29 @@ namespace XamarinIOS
 		{
 			base.ViewDidLoad();
 
-			var clothes = new List<Clothes>
+			//SharedData<int> shared = new SharedData<int>();
+
+			//shared.AddClothesForList("T-shirt1", UIImage.FromBundle("t-shirt");
+
+			SharedData<UIImage> shared = new SharedData<UIImage>();
 			{
-				new Clothes
-				{
-					Name = "T-shirt 1",
-					BdImage = UIImage.FromBundle("t-shirt")
-				},
-				new Clothes
-				{
-					Name = "T-shirt 2",
-					BdImage = UIImage.FromBundle("t-shirt")
-				},
-				new Clothes
-				{
-					Name = "T-shirt 3",
-					BdImage = UIImage.FromBundle("t-shirt")
-				},
-				new Clothes
-				{
-					Name = "T-shirt 4",
-					BdImage = UIImage.FromBundle("t-shirt")
-				},
-				new Clothes
-				{
-					Name = "T-shirt 5",
-					BdImage = UIImage.FromBundle("t-shirt")
-				}
+
+				shared.AddClothesForList("T-shirt1", UIImage.FromBundle("t-shirt"));
 
 			};
 
 			TshirtTableView.RowHeight = 60;
 
-			TshirtTableView.Source = new TshirtTVS(clothes);
+			TshirtTableView.Source = new TshirtTVS(shared);
 
-			TshirtTableView.Delegate = new ClothesDelegate(clothes, this);
+			TshirtTableView.Delegate = new ClothesDelegate(shared, this);
 
 			TshirtTableView.ReloadData();
 
 			bdButton.Clicked += (object sender, EventArgs e) =>
 			{
 
-				clothes.Add(new Clothes { Name = "BASIC", BdImage = UIImage.FromBundle("t-shirt") });
+				shared.AddClothesForList("Basic", UIImage.FromBundle("t-shirt"));
 
 				TshirtTableView.ReloadData();
 

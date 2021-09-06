@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using Foundation;
+using SharedProject;
 using UIKit;
 
 namespace XamarinIOS
@@ -17,47 +18,23 @@ namespace XamarinIOS
 		{
 			base.ViewDidLoad();
 
-			var clothes = new List<Clothes>
+			SharedData<UIImage> shared = new SharedData<UIImage>();
 			{
-				new Clothes
-				{
-					Name = "Cap 1",
-					BdImage = UIImage.FromBundle("caps")
-				},
-				new Clothes
-				{
-					Name = "Cap 2",
-					BdImage = UIImage.FromBundle("caps")
-				},
-				new Clothes
-				{
-					Name = "Cap 3",
-					BdImage = UIImage.FromBundle("caps")
-				},
-				new Clothes
-				{
-					Name = "Cap 4",
-					BdImage = UIImage.FromBundle("caps")
-				},
-				new Clothes
-				{
-					Name = "Cap 5",
-					BdImage = UIImage.FromBundle("caps")
-				}
+				shared.AddClothesForList("T-shirt1", UIImage.FromBundle("t-shirt"));
 
 			};
 
-			CapTableView.RowHeight = 60;
+            CapTableView.RowHeight = 60;
 
-			CapTableView.Source = new CapTVS(clothes);
+            CapTableView.Source = new CapTVS(shared);
 
-			CapTableView.Delegate = new ClothesDelegate(clothes, this);
+            CapTableView.Delegate = new ClothesDelegate(shared, this);
 
-			CapTableView.ReloadData();
+            CapTableView.ReloadData();
 
-			bdButton.Clicked += (object sender, EventArgs e) =>
+            bdButton.Clicked += (object sender, EventArgs e) =>
 			{
-				clothes.Add(new Clothes { Name = "BASIC", BdImage = UIImage.FromBundle("caps") });
+				shared.AddClothesForList("Basic", UIImage.FromBundle("cap"));
 
 				CapTableView.ReloadData();
 			};

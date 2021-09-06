@@ -3,6 +3,7 @@
 using System;
 
 using Foundation;
+using SharedProject;
 using UIKit;
 
 namespace XamarinIOS
@@ -13,10 +14,10 @@ namespace XamarinIOS
 		{ 
 		}
 
-		internal void UpdateCell(Clothes clothess)
+		internal void UpdateCell(Clothes<UIImage> clothess)
 		{
 			bdLabel.Text = clothess.Name;
-			bdImage.Image = clothess.BdImage;
+			bdImage.Image = clothess.bgImage;
 		}
 	}
 }

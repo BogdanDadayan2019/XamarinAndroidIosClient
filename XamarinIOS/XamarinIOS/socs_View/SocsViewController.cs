@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using Foundation;
+using SharedProject;
 using UIKit;
 
 namespace XamarinIOS
@@ -17,48 +18,24 @@ namespace XamarinIOS
 		{
 			base.ViewDidLoad();
 
-			var clothes = new List<Clothes>
+			SharedData<UIImage> shared = new SharedData<UIImage>();
 			{
-				new Clothes
-				{
-					Name = "Socs 1",
-					BdImage = UIImage.FromBundle("socs")
-				},
-				new Clothes
-				{
-					Name = "Socs 2",
-					BdImage = UIImage.FromBundle("socs")
-				},
-				new Clothes
-				{
-					Name = "Socs 3",
-					BdImage = UIImage.FromBundle("socs")
-				},
-				new Clothes
-				{
-					Name = "Socs 4",
-					BdImage = UIImage.FromBundle("socs")
-				},
-				new Clothes
-				{
-					Name = "Socs 5",
-					BdImage = UIImage.FromBundle("socs")
-				}
+				shared.AddClothesForList("Socs1", UIImage.FromBundle("socs"));
 
 			};
 
 			SocsTableView.RowHeight = 60;
 
-			SocsTableView.Source = new SocsTVS(clothes);
+			SocsTableView.Source = new SocsTVS(shared);
 
-			SocsTableView.Delegate = new ClothesDelegate(clothes, this);
+			SocsTableView.Delegate = new ClothesDelegate(shared, this);
 
 			SocsTableView.ReloadData();
 
 
 			bdButton.Clicked += (object sender, EventArgs e) =>
 			{
-				clothes.Add(new Clothes { Name = "BASIC", BdImage = UIImage.FromBundle("socs") });
+				shared.AddClothesForList("Basic", UIImage.FromBundle("socs"));
 
 				SocsTableView.ReloadData();
 			};

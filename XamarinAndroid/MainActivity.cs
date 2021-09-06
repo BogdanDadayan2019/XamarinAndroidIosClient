@@ -32,8 +32,6 @@ namespace DesignerWalkthrough
 
         }
 
-
-
         private void ListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             if (e.Position == 0)

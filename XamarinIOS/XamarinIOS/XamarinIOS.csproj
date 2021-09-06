@@ -160,15 +160,7 @@
     </ImageAsset>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
-    <Folder Include="Resources\drawling\" />
     <Folder Include="Assets.xcassets\.imageset\" />
-    <Folder Include="t-shirt_View\" />
-    <Folder Include="hoodie_View\" />
-    <Folder Include="cap_View\" />
-    <Folder Include="socs_View\" />
-    <Folder Include="clothesType_View\" />
-    <Folder Include="Clothes\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -245,7 +237,6 @@
     <BundleResource Include="Resources\drawling\socs.png" />
     <BundleResource Include="Resources\drawling\hoodie.png" />
     <BundleResource Include="Resources\drawling\caps.png" />
-    <BundleResource Include="Resources\.DS_Store" />
   </ItemGroup>
   <Import Project="..\..\SharedProject\SharedProject.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

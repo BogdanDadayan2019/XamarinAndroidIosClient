@@ -8,18 +8,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SharedProject;
 
 namespace XamarinAndroid
 {
-    public class ClothesAdapter : BaseAdapter<Clothes>
+    public class ClothesAdapter : BaseAdapter<Clothes<int>>
     {
 
-        List<Clothes> items;
+        List<Clothes<int>> items;
         Activity context;
         Button button1;
         Button button2;
 
-        public ClothesAdapter(Activity context, List<Clothes> items)
+        public ClothesAdapter(Activity context, List<Clothes<int>> items)
             : base()
         {
             this.context = context;
@@ -29,7 +30,7 @@ namespace XamarinAndroid
         {
             return position;
         }
-        public override Clothes this[int position]
+        public override Clothes<int> this[int position]
         {
             get { return items[position]; }
         }
@@ -45,7 +46,7 @@ namespace XamarinAndroid
             if (view == null)
                 view = context.LayoutInflater.Inflate(Resource.Layout.list_clothes_item, null);
             view.FindViewById<TextView>(Resource.Id.textView1).Text = item.Name;
-            view.FindViewById<ImageView>(Resource.Id.imageView1).SetImageResource(item.ImageResourceId);
+            view.FindViewById<ImageView>(Resource.Id.imageView1).SetImageResource(item.bgImage);
 
             button1 = view.FindViewById<Button>(Resource.Id.buttonChanged);
             button1.Click += Button1_Click;

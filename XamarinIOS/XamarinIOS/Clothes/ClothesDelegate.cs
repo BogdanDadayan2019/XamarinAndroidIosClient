@@ -2,39 +2,40 @@
 
 using System.Collections.Generic;
 using Foundation;
+using SharedProject;
 using UIKit;
 
 namespace XamarinIOS
 {
     internal class ClothesDelegate : UITableViewDelegate
     {
-        private List<Clothes> clothes;
+        private SharedData<UIImage> shared = new SharedData<UIImage>();
         private _TshirtViewController tshirtviewcontroller;
         private SocsViewController socsViewController;
         private HoodieViewController hoodieViewController;
         private _CapViewController capViewController;
 
-        public ClothesDelegate(List<Clothes> clothes)
+        public ClothesDelegate(SharedData<UIImage> shared)
         {
-            this.clothes = clothes;
+            this.shared.clothes = shared.clothes;
         }
 
-        public ClothesDelegate(List<Clothes> clothes, _TshirtViewController tshirtviewcontroller) : this(clothes)
+        public ClothesDelegate(SharedData<UIImage> shared, _TshirtViewController tshirtviewcontroller) : this(shared)
         {
             this.tshirtviewcontroller = tshirtviewcontroller;
         }
 
-        public ClothesDelegate(List<Clothes> clothes, SocsViewController socsViewController) : this(clothes)
+        public ClothesDelegate(SharedData<UIImage> shared, SocsViewController socsViewController) : this(shared)
         {
             this.socsViewController = socsViewController;
         }
 
-        public ClothesDelegate(List<Clothes> clothes, HoodieViewController hoodieViewController) : this(clothes)
+        public ClothesDelegate(SharedData<UIImage> shared, HoodieViewController hoodieViewController) : this(shared)
         {
             this.hoodieViewController = hoodieViewController;
         }
 
-        public ClothesDelegate(List<Clothes> clothes, _CapViewController capViewController) : this(clothes)
+        public ClothesDelegate(SharedData<UIImage> shared, _CapViewController capViewController) : this(shared)
         {
             this.capViewController = capViewController;
         }
@@ -45,9 +46,9 @@ namespace XamarinIOS
             var action = UITableViewRowAction.Create(UITableViewRowActionStyle.Default, "delete", (arg1, arg2) =>
             {
 
-                var selected = clothes[indexPath.Row];
+                var selected = shared.clothes[indexPath.Row];
 
-                clothes.Remove(selected);
+                shared.clothes.Remove(selected);
 
                 tableView.ReloadData();
             });
@@ -63,7 +64,7 @@ namespace XamarinIOS
 
                     field = textField;
 
-                    var selected = clothes[indexPath.Row];
+                    var selected = shared.clothes[indexPath.Row];
 
 
                     field.Placeholder = "placeholder";
@@ -84,7 +85,7 @@ namespace XamarinIOS
 
                 alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, (actionOK) =>
                 {
-                    var selected = clothes[indexPath.Row];
+                    var selected = shared.clothes[indexPath.Row];
                     selected.Name = field.Text;
                     tableView.ReloadData();
 
