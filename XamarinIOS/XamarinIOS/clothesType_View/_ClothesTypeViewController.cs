@@ -1,6 +1,9 @@
 using Foundation;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using UIKit;
 
 namespace XamarinIOS
@@ -11,6 +14,10 @@ namespace XamarinIOS
         UIViewController hoodieViewController;
         UIViewController socsViewController;
         UIViewController capViewController;
+
+        private static readonly HttpClient client = new HttpClient();
+
+        private readonly string ClothesTypeUrl = "http://192.168.0.188:5000/api/values/";
 
         public _ClothesTypeViewController(IntPtr handle) : base(handle)
         {
@@ -30,34 +37,41 @@ namespace XamarinIOS
             capViewController = Storyboard.InstantiateViewController("CapViewController_") as _CapViewController;
         }
 
-        public override void ViewDidLoad()
+        public override async void ViewDidLoad()
         {
             base.ViewDidLoad();
 
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = await client.GetAsync(ClothesTypeUrl);
+
+            string result = await response.Content.ReadAsStringAsync();
+
+            List<ClothesType> clothesType = JsonConvert.DeserializeObject<List<ClothesType>>(result);
 
             var clothesTypes = new List<ClothesType>
             {
                 new ClothesType
                 {
-                    Name = "T-shirts",
+                    NameType = clothesType[0].NameType,
                     TranslateName = "футболки",
                     BdImage = UIImage.FromBundle("t-shirt")
                 },
                 new ClothesType
                 {
-                    Name = "Hoodies",
+                    NameType = clothesType[1].NameType,
                     TranslateName = "худи",
                     BdImage = UIImage.FromBundle("hoodie")
                 },
                 new ClothesType
                 {
-                    Name = "Caps",
+                    NameType = clothesType[2].NameType,
                     TranslateName = "кепки",
                     BdImage = UIImage.FromBundle("caps")
                 },
                 new ClothesType
                 {
-                    Name = "Socs",
+                    NameType = clothesType[3].NameType,
                     TranslateName = "носки",
                     BdImage = UIImage.FromBundle("socs")
                 }

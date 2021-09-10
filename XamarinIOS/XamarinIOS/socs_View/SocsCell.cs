@@ -16,7 +16,7 @@ namespace XamarinIOS
 
 		internal void UpdateCell(Clothes<UIImage> clothess)
 		{
-			bdLabel.Text = clothess.Name;
+			bdLabel.Text = clothess.NameClothes;
 			bdImage.Image = clothess.bgImage;
 		}
 	}

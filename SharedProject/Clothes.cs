@@ -5,13 +5,28 @@ namespace SharedProject
 {
     public class Clothes<T>
     {
-        public string Name { get; set; }
+        public string NameClothes { get; set; }
         public T bgImage { get; set; }
+        public int id { get; set; }
 
-        public Clothes(string Name, T bgImage)
+        public Clothes(string NameClothes, T bgImage)
         {
-            this.Name = Name;
+            this.NameClothes = NameClothes;
             this.bgImage = bgImage;
+           
         }
+
+        public Clothes(string NameClothes)
+        {
+            this.NameClothes = NameClothes;
+           
+        }
+
+        public Clothes()
+        {
+
+        }
+        
+            
     }
 }

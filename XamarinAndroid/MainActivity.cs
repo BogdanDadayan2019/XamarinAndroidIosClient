@@ -6,6 +6,12 @@ using System.Collections.Generic;
 using XamarinAndroid;
 using Android.Content;
 using XamarinAndroid.Resources.layout;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
+using System.Net.Http.Headers;
+using System.Net;
+using Android.Runtime;
 
 namespace DesignerWalkthrough
 {
@@ -14,17 +20,29 @@ namespace DesignerWalkthrough
     {
         List<ClothesType> clothesTypes = new List<ClothesType>();
         ListView listView;
+        
+        private static readonly HttpClient client = new HttpClient();
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        private readonly string ClothesTypeUrl = "http://192.168.0.188:5000/api/values/";
+
+        protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
             listView = FindViewById<ListView>(Resource.Id.listView1);
 
-            clothesTypes.Add(new ClothesType("T-shirt", "футболки", Resource.Drawable.tshirt));
-            clothesTypes.Add(new ClothesType("Hoodie", "худи", Resource.Drawable.hoodie));
-            clothesTypes.Add(new ClothesType("Cap", "кепки", Resource.Drawable.cap));
-            clothesTypes.Add(new ClothesType("Socs", "носки", Resource.Drawable.socs));
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = await client.GetAsync(ClothesTypeUrl);
+
+            string result = await response.Content.ReadAsStringAsync();
+
+            List<ClothesType> clothesType = JsonConvert.DeserializeObject<List<ClothesType>>(result);
+
+            clothesTypes.Add(new ClothesType(clothesType[0].NameType, "футболки", Resource.Drawable.tshirt));
+            clothesTypes.Add(new ClothesType(clothesType[1].NameType, "худи", Resource.Drawable.hoodie));
+            clothesTypes.Add(new ClothesType(clothesType[2].NameType, "кепки", Resource.Drawable.cap));
+            clothesTypes.Add(new ClothesType(clothesType[3].NameType, "носки", Resource.Drawable.socs));
        
             listView.Adapter = new ClothesTypeAdapter(this, clothesTypes);
 

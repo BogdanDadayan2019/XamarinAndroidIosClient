@@ -2,7 +2,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using Foundation;
+using Newtonsoft.Json;
 using SharedProject;
 using UIKit;
 
@@ -14,17 +17,30 @@ namespace XamarinIOS
 		{
 		}
 
-		public override void ViewDidLoad()
+		private static readonly HttpClient client = new HttpClient();
+
+		private readonly string ClothesTypeUrl = "http://192.168.0.188:5000/api/values/cap";
+
+		public override async void ViewDidLoad()
 		{
 			base.ViewDidLoad();
 
+			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+			HttpResponseMessage response = await client.GetAsync(ClothesTypeUrl);
+
+			string result = await response.Content.ReadAsStringAsync();
+
+			List<Clothes<int>> _clothes = JsonConvert.DeserializeObject<List<Clothes<int>>>(result);
+
 			SharedData<UIImage> shared = new SharedData<UIImage>();
+
+			foreach (Clothes<int> i1 in _clothes)
 			{
-				shared.AddClothesForList("T-shirt1", UIImage.FromBundle("t-shirt"));
+				shared.AddClothesForList(i1.NameClothes, UIImage.FromBundle("caps"));
+			}
 
-			};
-
-            CapTableView.RowHeight = 60;
+			CapTableView.RowHeight = 60;
 
             CapTableView.Source = new CapTVS(shared);
 
@@ -34,7 +50,7 @@ namespace XamarinIOS
 
             bdButton.Clicked += (object sender, EventArgs e) =>
 			{
-				shared.AddClothesForList("Basic", UIImage.FromBundle("cap"));
+				shared.AddClothesForList("Basic", UIImage.FromBundle("caps"));
 
 				CapTableView.ReloadData();
 			};

@@ -41,7 +41,7 @@ namespace XamarinAndroid
             View view = convertView;
             if (view == null)
                 view = context.LayoutInflater.Inflate(Resource.Layout.list_item, null);
-            view.FindViewById<TextView>(Resource.Id.textView1).Text = item.Name;
+            view.FindViewById<TextView>(Resource.Id.textView1).Text = item.NameType;
             view.FindViewById<TextView>(Resource.Id.textView2).Text = item.Code;
             view.FindViewById<ImageView>(Resource.Id.imageView1).SetImageResource(item.ImageResourceId);
 

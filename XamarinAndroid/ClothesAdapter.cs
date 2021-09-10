@@ -45,7 +45,7 @@ namespace XamarinAndroid
             View view = convertView;
             if (view == null)
                 view = context.LayoutInflater.Inflate(Resource.Layout.list_clothes_item, null);
-            view.FindViewById<TextView>(Resource.Id.textView1).Text = item.Name;
+            view.FindViewById<TextView>(Resource.Id.textView1).Text = item.NameClothes;
             view.FindViewById<ImageView>(Resource.Id.imageView1).SetImageResource(item.bgImage);
 
             button1 = view.FindViewById<Button>(Resource.Id.buttonChanged);
@@ -72,17 +72,18 @@ namespace XamarinAndroid
                 EditText editText = view.FindViewById<EditText>(Resource.Id.editText1);
                 dialog.SetView(view);
                 AlertDialog alert = dialog.Create();
-                alert.SetTitle("Taking Input");
+                alert.SetTitle("Change name");
+                editText.Text = item.NameClothes;
 
                 alert.SetButton("Ok", (s, e) =>
                 {
                     if (editText.Text.Equals(""))
                     {
-                        item.Name = item.Name;
+                        item.NameClothes = item.NameClothes;
                     }
                     else
                     {
-                        item.Name = editText.Text;
+                        item.NameClothes = editText.Text;
                     }
                 });
 

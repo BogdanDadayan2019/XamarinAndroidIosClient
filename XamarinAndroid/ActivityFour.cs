@@ -9,6 +9,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SharedProject;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
 
 namespace XamarinAndroid.Resources.layout
 {
@@ -19,17 +22,28 @@ namespace XamarinAndroid.Resources.layout
         ListView listView;
         Button button;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        private static readonly HttpClient client = new HttpClient();
+
+        private readonly string ClothesTypeUrl = "http://192.168.0.188:5000/api/values/cap";
+
+        protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.activity_four);
             listView = FindViewById<ListView>(Resource.Id.listView4);
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            shared.AddClothesForList("Cap 1", Resource.Drawable.cap);
-            shared.AddClothesForList("Cap 2", Resource.Drawable.cap);
-            shared.AddClothesForList("Cap 3", Resource.Drawable.cap);
-            shared.AddClothesForList("Cap 4", Resource.Drawable.cap);
+            HttpResponseMessage response = await client.GetAsync(ClothesTypeUrl);
+
+            string result = await response.Content.ReadAsStringAsync();
+
+            List<Clothes<int>> _clothes = JsonConvert.DeserializeObject<List<Clothes<int>>>(result);
+
+            foreach (Clothes<int> i1 in _clothes)
+            {
+                shared.AddClothesForList(i1.NameClothes, Resource.Drawable.cap);
+            }
 
             listView.Adapter = new ClothesAdapter(this, shared.clothes);
             button = FindViewById<Button>(Resource.Id.button1);

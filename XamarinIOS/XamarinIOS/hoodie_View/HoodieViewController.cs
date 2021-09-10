@@ -2,7 +2,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using Foundation;
+using Newtonsoft.Json;
 using SharedProject;
 using UIKit;
 
@@ -14,44 +17,31 @@ namespace XamarinIOS
 		{
 		}
 
-		public override void ViewDidLoad()
+		private static readonly HttpClient client = new HttpClient();
+
+		private readonly string ClothesTypeUrl = "http://192.168.0.188:5000/api/values/hoodie";
+
+		public override async void ViewDidLoad()
 		{
 			base.ViewDidLoad();
 
-            SharedData<UIImage> shared = new SharedData<UIImage>();
-            {
 
-                shared.AddClothesForList("Hoodie1", UIImage.FromBundle("hoodie"));
+			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                //	new Clothes
-                //	{
-                //		Name = "Hoodie 1",
-                //		BdImage = UIImage.FromBundle("hoodie")
-                //	},
-                //	new Clothes
-                //	{
-                //		Name = "Hoodie 2",
-                //		BdImage = UIImage.FromBundle("hoodie")
-                //	},
-                //	new Clothes
-                //	{
-                //		Name = "Hoodie 3",
-                //		BdImage = UIImage.FromBundle("hoodie")
-                //	},
-                //	new Clothes
-                //	{
-                //		Name = "Hoodie 4",
-                //		BdImage = UIImage.FromBundle("hoodie")
-                //	},
-                //	new Clothes
-                //	{
-                //		Name = "Hoodie 5",
-                //		BdImage = UIImage.FromBundle("hoodie")
-                //	}
+			HttpResponseMessage response = await client.GetAsync(ClothesTypeUrl);
 
-            };
+			string result = await response.Content.ReadAsStringAsync();
 
-            HoodieTableView.RowHeight = 60;
+			List<Clothes<int>> _clothes = JsonConvert.DeserializeObject<List<Clothes<int>>>(result);
+
+			SharedData<UIImage> shared = new SharedData<UIImage>();
+
+			foreach (Clothes<int> i1 in _clothes)
+			{
+				shared.AddClothesForList(i1.NameClothes, UIImage.FromBundle("hoodie"));
+			}
+
+			HoodieTableView.RowHeight = 60;
 
 			HoodieTableView.Source = new HoodieTVS(shared);
 
@@ -61,9 +51,9 @@ namespace XamarinIOS
 
 			bdButton.Clicked += (object sender, EventArgs e) =>
 			{
-                shared.AddClothesForList("Basic", UIImage.FromBundle("hoodie"));
+				shared.AddClothesForList("Basic", UIImage.FromBundle("hoodie"));
 
-                HoodieTableView.ReloadData();
+				HoodieTableView.ReloadData();
 			};
 
 		}

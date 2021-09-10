@@ -2,7 +2,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using Foundation;
+using Newtonsoft.Json;
 using SharedProject;
 using UIKit;
 
@@ -14,15 +17,28 @@ namespace XamarinIOS
 		{
 		}
 
-		public override void ViewDidLoad()
+		private static readonly HttpClient client = new HttpClient();
+
+		private readonly string ClothesTypeUrl = "http://192.168.0.188:5000/api/values/socs";
+
+		public override async void ViewDidLoad()
 		{
 			base.ViewDidLoad();
 
-			SharedData<UIImage> shared = new SharedData<UIImage>();
-			{
-				shared.AddClothesForList("Socs1", UIImage.FromBundle("socs"));
+			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-			};
+			HttpResponseMessage response = await client.GetAsync(ClothesTypeUrl);
+
+			string result = await response.Content.ReadAsStringAsync();
+
+			List<Clothes<int>> _clothes = JsonConvert.DeserializeObject<List<Clothes<int>>>(result);
+
+			SharedData<UIImage> shared = new SharedData<UIImage>();
+
+			foreach (Clothes<int> i1 in _clothes)
+			{
+				shared.AddClothesForList(i1.NameClothes, UIImage.FromBundle("socs"));
+			}
 
 			SocsTableView.RowHeight = 60;
 

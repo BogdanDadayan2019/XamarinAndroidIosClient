@@ -4,7 +4,7 @@ namespace XamarinIOS
 {
     class ClothesType
     {
-        public string Name
+        public string NameType
         {
             get;
             set;

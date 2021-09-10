@@ -13,15 +13,16 @@ namespace XamarinAndroid
 {
     public class ClothesType
     {
-        public string Name { get; set; }
+        public string NameType { get; set; }
         public string Code { get; set; }
         public int ImageResourceId { get; set; }
 
         public ClothesType(string Name, string Code, int ImageResourceId)
         {
-            this.Name = Name;
+            this.NameType = Name;
             this.Code = Code;
             this.ImageResourceId = ImageResourceId;
         }
+
     }
 }

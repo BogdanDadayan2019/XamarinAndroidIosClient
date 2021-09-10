@@ -186,7 +186,6 @@
     <Compile Include="hoodie_View\HoodieViewController.designer.cs">
       <DependentUpon>HoodieViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Clothes\Clothes.cs" />
     <Compile Include="Clothes\ClothesDelegate.cs" />
     <Compile Include="socs_View\SocsCell.cs" />
     <Compile Include="socs_View\SocsCell.designer.cs">

@@ -68,7 +68,7 @@ namespace XamarinIOS
 
 
                     field.Placeholder = "placeholder";
-                    field.Text = selected.Name;
+                    field.Text = selected.NameClothes;
                     field.AutocorrectionType = UITextAutocorrectionType.No;
                     field.KeyboardType = UIKeyboardType.Default;
                     field.ReturnKeyType = UIReturnKeyType.Done;
@@ -86,7 +86,7 @@ namespace XamarinIOS
                 alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, (actionOK) =>
                 {
                     var selected = shared.clothes[indexPath.Row];
-                    selected.Name = field.Text;
+                    selected.NameClothes = field.Text;
                     tableView.ReloadData();
 
                 }));
