@@ -8,10 +8,10 @@ namespace SharedProject
     {
         public List<Clothes<T>> clothes = new List<Clothes<T>>();
 
-        public void AddClothesForList(string Name, T bgImage)
+        public void AddClothesForList(string Name, T bgImage, int idType, int id)
         {
-            clothes.Add(new Clothes<T>(Name, bgImage));
-       
+            clothes.Add(new Clothes<T>(Name, bgImage, idType, id));
+
         }
     }
 }

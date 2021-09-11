@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using Foundation;
 using Newtonsoft.Json;
 using SharedProject;
@@ -20,6 +21,7 @@ namespace XamarinIOS
 		private static readonly HttpClient client = new HttpClient();
 
 		private readonly string ClothesTypeUrl = "http://192.168.0.188:5000/api/values/hoodie";
+		private readonly string AddUrl = "http://192.168.0.188:5000/api/values";
 
 		public override async void ViewDidLoad()
 		{
@@ -38,7 +40,7 @@ namespace XamarinIOS
 
 			foreach (Clothes<int> i1 in _clothes)
 			{
-				shared.AddClothesForList(i1.NameClothes, UIImage.FromBundle("hoodie"));
+				shared.AddClothesForList(i1.NameClothes, UIImage.FromBundle("hoodie"), 8, i1.id);
 			}
 
 			HoodieTableView.RowHeight = 60;
@@ -49,9 +51,25 @@ namespace XamarinIOS
 
 			HoodieTableView.ReloadData();
 
-			bdButton.Clicked += (object sender, EventArgs e) =>
+			bdButton.Clicked += async (object sender, EventArgs e) =>
 			{
-				shared.AddClothesForList("Basic", UIImage.FromBundle("hoodie"));
+				var cl = new Clothes<int>
+				{
+					idType = 8,
+					NameClothes = "Hoodie",
+					bgImage = 0
+				};
+
+				var json = JsonConvert.SerializeObject(cl, Formatting.Indented);
+				var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
+
+				HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, AddUrl);
+				request.Content = new StringContent(json, Encoding.UTF8, "application/json");
+				string _result = await request.Content.ReadAsStringAsync();
+
+				HttpResponseMessage _response = await client.PostAsync(AddUrl, stringContent);
+
+				shared.AddClothesForList(cl.NameClothes, UIImage.FromBundle("hoodie"), cl.idType, cl.id);
 
 				HoodieTableView.ReloadData();
 			};
